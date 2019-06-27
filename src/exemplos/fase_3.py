@@ -4,8 +4,14 @@ import speech_recognition as sr
 import time
 from gtts import gTTS
 
+def logar(texto):
+    with open('historico.log', mode='a', encoding='windows-1252') as arquivo:
+        arquivo.write(texto + '\n')
+
 def falar(texto, idioma):
     if texto:
+        logar('InfoxBot: {}'.format(texto))
+
         # Criar um objeto, que contém a sintexe do texto digitado, no idioma selecionado
         fala = gTTS(text=texto, lang=idioma, slow=False)
 
@@ -42,6 +48,8 @@ def ouvir(idioma):
         # Caso não consiga reconher uma frase, retornar uma frase informando
         frase = 'Desculpe, não consegui entender o que você falou.'
 
+    logar('Usuário: {}'.format(frase))
+
     return frase
 
 
@@ -53,7 +61,7 @@ while executar:
     idioma = 'pt-br'
 
     # Bot se apresenta e pergunta o nome do usuário
-    falar('Olá! Eu sou um Bot! Qual o seu nome?', idioma)
+    falar('Olá! Eu me chamo InfoxBot! Qual o seu nome?', idioma)
 
     nome = ouvir(idioma)
 
@@ -80,6 +88,6 @@ while executar:
                     executar = False
                     break
                 else:
-                    falar(fala, idioma)
+                    falar('{}, você falou: {}'.format(nome, fala), idioma)
     else:
         continue
