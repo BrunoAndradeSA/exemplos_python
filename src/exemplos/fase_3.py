@@ -28,6 +28,8 @@ def ouvir(idioma):
     with sr.Microphone() as source:
         # Função para redução de ruído do microfone
         microfone.adjust_for_ambient_noise(source)
+
+        microfone.dynamic_energy_threshold = False
         
         # Ouvir o microfone e armazenar na variável
         print("Fale agora...")
@@ -44,7 +46,9 @@ def ouvir(idioma):
 
 
 # Executar um loop infinito
-while True:
+executar = True
+
+while executar:
     # Define o idioma a ser utiizado para sintetizar a fala
     idioma = 'pt-br'
 
@@ -55,12 +59,27 @@ while True:
 
     # Bot dá boas-vindas ao usuário, caso tenha entendido o nome
     if nome != 'Desculpe, não consegui entender o que você falou.':
-        falar('Seja bem-vindo {}! Caso deseje encerrar a conversa, basta dizer sair'.format(nome), idioma)
+        falar('Seja bem-vindo {}! Caso deseje encerrar a conversa, basta dizer sair, ou senão, continuar'.format(nome), idioma)
+    
+
+        resposta = ouvir(idioma)
+
+        if resposta == 'sair':
+            # Bot se despede do usuário e encerra o programa
+            falar('Até mais {}'.format(nome), idioma)
+            break
+        else:
+            # o Bot repetirá o que for dito
+            while True:
+                falar('{}, diga algo que eu irei tentar repetir.'.format(nome), idioma)
+
+                fala = ouvir(idioma)
+
+                if fala == 'sair':
+                    falar('Até mais {}'.format(nome), idioma)
+                    executar = False
+                    break
+                else:
+                    falar(fala, idioma)
+    else:
         continue
-
-    resposta = ouvir(idioma)
-
-    if resposta == 'sair':
-        # Bot se despede do usuário e encerra o programa
-        falar('Até mais {}'.format(nome), idioma)
-        break
