@@ -30,6 +30,7 @@ def ouvir(idioma):
         microfone.adjust_for_ambient_noise(source)
         
         # Ouvir o microfone e armazenar na variável
+        print("Fale agora...")
         audio = microfone.listen(source)
 
     try:
