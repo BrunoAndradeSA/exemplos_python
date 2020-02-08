@@ -38,14 +38,17 @@ arquivo.close()
 '''
 
 # Escrevendo em arquivos, adicionando o resultado ao final
+'''
 arquivo = open('meu_arquivo.txt', 'a')
 
 conteudo = input('Conteúdo do arquivo:')
 arquivo.write(conteudo + '\n') # \n indica uma quebra de linha
 
 arquivo.close()
+'''
 
 # Manipulação do ponteiro do arquivo com a função seek
+'''
 arquivo = open('meu_arquivo.txt', 'r')
 
 print(arquivo.read(2))
@@ -54,3 +57,5 @@ print(arquivo.read(2))
 arquivo.seek(0)
 print(arquivo.read(2))
 print(arquivo.read(2))
+arquivo.close()
+'''
