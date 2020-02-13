@@ -24,6 +24,6 @@ diferenca = data_final - data_inicial
 print(type(diferenca))
 
 print('Diferença de {} dias entre as datas'.format(diferenca.days))
-print('Diferença de {} segundos entre as horas'.format(diferenca.seconds))
-print('Diferença de {} minutos entre as horas'.format(diferenca.seconds / 60))
-print('Diferença de {} horas entre as horas'.format(diferenca.seconds / 60 / 60))
+print('Diferença de {} segundos entre as datas'.format(diferenca.seconds))
+print('Diferença de {} minutos entre as datas'.format(diferenca.seconds / 60))
+print('Diferença de {} horas entre as datas'.format(diferenca.seconds / 60 / 60))
