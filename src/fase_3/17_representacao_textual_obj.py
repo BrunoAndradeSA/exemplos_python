@@ -29,7 +29,7 @@ classe_2 = Classe2('Classe 2')
 # A representação textual da instância passa a exibir o retorno da função __str__
 print('Representação textual do objeto 2: {}'.format(classe_2))
 
-# De modo semelhando ao método __str__ podemos utilizar o método __repr__
+# De modo semelhante ao método __str__ podemos utilizar o método __repr__
 class Classe3:
     def __init__(self, nome):
         self.nome = nome
@@ -39,7 +39,7 @@ class Classe3:
 
 print('Representação textual da classe 3: {}'.format(Classe3))
 
-classe_3 = Classe2('Classe 3')
+classe_3 = Classe3('Classe 3')
 
 print('Representação textual do objeto 3: {}'.format(classe_3))
 
